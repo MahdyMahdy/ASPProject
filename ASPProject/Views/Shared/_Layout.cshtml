@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> ASP Project</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+        <div class="navbar navbar-inverse navbar-fixed-top" style="background:#428bca">
+            <nav class="navbar navbar-default navbar-fixed-top" style="background:#428bca">
+                <div class="navbar-header" style="background:#428bca">
+                    
+                    @Html.Label("  med", new { @style = "font-size:25px ; color:red; margin-left:8px; " })@Html.Label("Market", new { @style = "font-size:35px ; color:green; " })
+
+                </div>
+                <div class="collapse navbar-collapse" id="resNav">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink("Home", "Index", "Home/Index", null, new { @style = "color:white;" })</li>
+                        <li>@Html.ActionLink("Items", "Index", "Item/Index", null, new { @style = "color:white;" })</li>
+                        @{
+                            if (ASPProject.Controllers.SignInController.id <= 0)
+                            {
+                                <li>@Html.ActionLink("Login", "Index", "SignIn/Index", null, new { @style = "color:white;" })</li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink("Add Item", "Index", "AddItems/Index", null, new { @style = "color:white;" })</li>
+                                <li>@Html.ActionLink("Profile", "Index","Profile",new { @id = ASPProject.Controllers.SignInController.id }, new { @style = "color:white;" })</li>
+                                if (ASPProject.Controllers.SignInController.id == 1)
+                                {
+                                  <li>@Html.ActionLink("Admin", "Index", "Admin/Index", null, new { @style = "color:white;" })</li>
+                                }
+                                <li>@Html.ActionLink("Logout", "Logout", "Profile", null, new { @style = "color:white;" })</li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div >
+            @RenderBody()
+        </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

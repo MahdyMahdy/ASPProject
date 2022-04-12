@@ -1,0 +1,104 @@
+﻿@model IEnumerable<ASPProject.Models.Item>
+
+
+<style>
+    #productTable td {
+        vertical-align: middle
+    }
+</style>
+
+<h2>Items</h2>
+<link href="~/Content/StyleSheet1.css" rel="stylesheet" type="text/css" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+<table id="productTable" class="table">
+    <tr style="color:#428bca;">
+        <th>
+            <center> Name item</center>
+        </th>
+        <th>
+
+            <center> @Html.Label("Image", new { @align = "center" })</center>
+
+        </th>
+        <th>
+            <center>Number of Capsule</center>
+        </th>
+        <th>
+            <center>Price</center>
+        </th>
+        <th>
+            <center>Expiration Date</center>
+        </th>
+        <th>
+            <center>Name</center>
+        </th>
+        <th>
+            <center> Details</center>
+        </th>
+        <th></th>
+    </tr>
+
+
+
+    @foreach (var item in Model)
+    {
+<tr align="center">
+    <td valign="middle">
+        @Html.DisplayFor(modelItem => item.name)
+    </td>
+    <td>
+        <img src="data:image/jpg;base64,@Convert.ToBase64String(item.image)" height="100" width="150" style="margin-top:15px;">
+    </td>
+    <td align="center">
+        @Html.DisplayFor(modelItem => item.nb_Of_Cap)
+    </td>
+    <td align="center">
+        @{
+            if (item.price == 0)
+            {
+                @Html.Label("Free")
+            }
+            else
+            {
+                @Html.DisplayFor(modelItem => item.price)
+            }
+        }
+    </td>
+    <td>
+        @item.expiration_Date.ToString("dd/MM/yyyy")
+    </td>
+    <td align="center">
+        @Html.DisplayFor(modelItem => item.user.first_Name)
+        @Html.DisplayFor(modelItem => item.user.last_Name)
+    </td>
+    <td>
+        <form action="~/Profile/Index" method="get">
+            <button class="btn btn-primary" type="submit">@Html.DisplayFor(modelItem => item.user.first_Name) Details</button>
+            <input type="hidden" value="@item.user.user_ID" name="id" />
+        </form>
+    </td>
+    <td>
+
+        <form action="~/Admin/Confirmation" method="post">
+            <button class="btn btn-primary" type="submit" name="submit" value="confirm">Confirm</button>
+            <input type="hidden" value="@item.item_ID" name="id" />
+
+            <button class="btn btn-primary" type="submit" name="submit" value="delete">Delete</button>
+            
+
+
+
+        </form>
+
+    </td>
+
+</tr>
+    }
+
+
+</table>

@@ -1,0 +1,82 @@
+﻿@model ASPProject.Models.Login
+<link href="~/Content/formRegistre.css" rel="stylesheet" />
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+
+            <form action="Index" class="login100-form validate-form p-l-55 p-r-55 p-t-178" method="post">
+                <span class="login100-form-title">
+                    Sign Up
+                </span>
+
+                <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter your name">
+                    @Html.TextBoxFor(model => model.user.first_Name, "", new { @class = "input100", placeholder = "First Name..." })
+                    
+                    <span class="focus-input100"></span>
+                </div>
+                @Html.ValidationMessageFor(model => model.user.first_Name, "", new { @class = "text-danger" })
+
+                <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter your last name">
+                    @Html.TextBoxFor(model => model.user.last_Name, "", new { @class = "input100", placeholder = "Last Name..." })
+                    <span class="focus-input100"></span>
+                </div>
+                @Html.ValidationMessageFor(model => model.user.last_Name, "", new { @class = "text-danger" })
+                <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter your address">
+                    <input class="input100" type="text" id="gov" name="gov" placeholder="Governorat...">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter your address">
+                    <input class="input100" type="text" id="city" name="city" placeholder="City...">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter your address">
+                    <input class="input100" type="text" id="street" name="street" placeholder="Street...">
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter your address">
+                    @Html.TextBoxFor(model => model.user.email, new { @class = "input100", placeholder = "Email..." })
+                    <span class="focus-input100"></span>
+                    @Html.ValidationMessageFor(model => model.user.email, "", new { @class = "text-danger" })
+                </div>
+                <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter your address">
+                    @Html.TextBoxFor(model => model.user.phone_Number, new { @class = "input100", placeholder = "Phone Number..." })
+                    <span class="focus-input100"></span>
+                </div>
+                @Html.ValidationMessageFor(model => model.user.phone_Number, "", new { @class = "text-danger" })
+
+                <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+                   
+                    @Html.TextBoxFor(model => model.username, "", new { @class = "input100", placeholder = "Username..." })
+                    <span class="focus-input100"></span>
+                </div>
+                @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                <p style="color:Red">@ViewBag.ErrorMessage</p>
+                <div class="wrap-input100 validate-input" data-validate="Please enter password">
+                    <input class="input100" type="password" id="password" name="pass" placeholder="Password...">
+                    <span class="focus-input100"></span>
+                </div>
+                <br><br>
+
+
+
+                <div class="container-login100-form-btn">
+                    <button type="submit" class="login100-form-btn" id="submit" name="btn_signup">
+                        SUBMIT
+                    </button>
+
+                </div>
+                <br><br>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
